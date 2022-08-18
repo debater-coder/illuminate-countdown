@@ -1,13 +1,16 @@
 import { Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
-const calcTimeLeft = ():
-  | { days: number; hours: number; minutes: number; seconds: number }
-  | {} => {
+const calcTimeLeft = (): {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+} => {
   let year = new Date().getFullYear();
   let difference = +new Date(`8/29/${year}`) - +new Date();
 
-  let timeLeft = {};
+  let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   if (difference > 0) {
     timeLeft = {
@@ -15,13 +18,6 @@ const calcTimeLeft = ():
       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
       minutes: Math.floor((difference / 1000 / 60) % 60),
       seconds: Math.floor((difference / 1000) % 60),
-    };
-  } else {
-    timeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
     };
   }
 
