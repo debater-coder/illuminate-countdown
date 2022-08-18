@@ -3,23 +3,29 @@ import { useState, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
 import "@fontsource/jetbrains-mono";
 
+const leftpad = (num: number, size: number) => {
+  let s = num + "";
+  while (s.length < size) s = "0" + s;
+  return s;
+};
+
 const calcTimeLeft = (): {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
 } => {
   let year = new Date().getFullYear();
   let difference = +new Date(year, 7, 29, 17, 30) - +new Date();
 
-  let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  let timeLeft = { days: "0", hours: "00", minutes: "00", seconds: "00" };
 
   if (difference > 0) {
     timeLeft = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)) + "",
+      hours: leftpad(Math.floor((difference / (1000 * 60 * 60)) % 24), 2),
+      minutes: leftpad(Math.floor((difference / 1000 / 60) % 60), 2),
+      seconds: leftpad(Math.floor((difference / 1000) % 60), 2),
     };
   }
 
