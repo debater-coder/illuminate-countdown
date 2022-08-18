@@ -1,5 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { chakra } from "@chakra-ui/react";
+import "@fontsource/orbitron";
 
 const calcTimeLeft = (): {
   days: number;
@@ -24,7 +26,7 @@ const calcTimeLeft = (): {
   return timeLeft;
 };
 
-function Countdown() {
+function Countdown({ digital = false }: { digital?: boolean }) {
   const [timeLeft, setTimeLeft] = useState(calcTimeLeft);
 
   useEffect(() => {
@@ -36,9 +38,12 @@ function Countdown() {
   });
 
   return (
-    <Heading size="3xl">
-      {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes{" "}
-      {timeLeft.seconds} seconds
+    <Heading
+      size="3xl"
+      fontFamily={digital ? "Orbitron, sans-serif" : "heading"}
+    >
+      {timeLeft.days} <chakra.span fontFamily={"heading"}>days</chakra.span>{" "}
+      {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
     </Heading>
   );
 }
