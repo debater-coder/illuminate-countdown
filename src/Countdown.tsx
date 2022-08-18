@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { chakra } from "@chakra-ui/react";
-import "@fontsource/orbitron";
+import "@fontsource/jetbrains-mono";
 
 const calcTimeLeft = (): {
   days: number;
@@ -40,7 +40,7 @@ function Countdown({ digital = false }: { digital?: boolean }) {
   return (
     <Heading
       size="3xl"
-      fontFamily={digital ? "Orbitron, sans-serif" : "heading"}
+      fontFamily={digital ? "JetBrains Mono, sans-serif" : "heading"}
     >
       {timeLeft.days} <chakra.span fontFamily={"heading"}>days</chakra.span>{" "}
       {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
