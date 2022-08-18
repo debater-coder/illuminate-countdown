@@ -8,7 +8,7 @@ const calcTimeLeft = (): {
   seconds: number;
 } => {
   let year = new Date().getFullYear();
-  let difference = +new Date(`8/29/${year}`) - +new Date();
+  let difference = +new Date(year, 7, 29, 16, 30) - +new Date();
 
   let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
